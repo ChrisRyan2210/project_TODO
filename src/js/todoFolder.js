@@ -1,11 +1,12 @@
 import todoItem from "./todoItem";
 
+
 const todoFolder = (id, name) => {
 
     let tasks = [];
 
-    const addTask = (task) => {
-        const newTask = task instanceof Object ? task : todoItem(...task);
+    const addTask = (id, title, desc, duedate, priority) => {
+        const newTask = todoItem(id, title, desc, duedate, priority);
         tasks.push(newTask);
     };
 
@@ -13,8 +14,7 @@ const todoFolder = (id, name) => {
         tasks = tasks.filter((task) => task.id !== id);
     };
 
-    const getTasks = () => tasks;
-
+    let getTasks = () => tasks;
 
     return {id, name, getTasks, removeTask, addTask};
 };
