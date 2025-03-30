@@ -6,18 +6,19 @@ import folderManager from '../backend/folderManager';
 //testing here
 const loadPage = () => {
 
-    // const sidebar = document.querySelector(".sidebar");
-    // document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector(".sidebar");
+    document.addEventListener("DOMContentLoaded", () => {
 
-    //     const folderArray = folderList.getFolders();
+        const folderList = folderManager.getFolders();
 
-    //     folderArray.forEach((folder) => {
-    //         const button = document.createElement("button");
-    //         button.textContent = folder.name;
-    //         button.classList.add("sidebar-button");
-    //         sidebar.appendChild(button);
-    //     });
-    // });
+        folderList.forEach((folder) => {
+            const button = document.createElement("button");
+            button.textContent = folder.name;
+            button.classList.add("sidebar-button");
+            button.setAttribute("data-id", folder.id);
+            sidebar.appendChild(button); 
+        });
+    });
 };
 
 export default loadPage;

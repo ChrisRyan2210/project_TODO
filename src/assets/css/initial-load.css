@@ -43,10 +43,8 @@ main > .sidebar {
     flex: 1;
     background-color: wheat;
     border-radius: 25px;
-    display: grid;
-    grid-template-columns: 1fr;
-    /* grid-template-rows: repeat(auto-fit, minmax(1fr, 10%)); */
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 main > .content {
