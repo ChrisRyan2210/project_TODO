@@ -1,5 +1,6 @@
 import folderManager from "../backend/folderManager";
 import retrieveTasks from "./retrieveTasks";
+import folderFactory from "../backend/folderFactory";
 
 const loadTasks = () => {
     
@@ -16,6 +17,8 @@ const loadTasks = () => {
             }
         }
     });
+
 };
 
 export default loadTasks;
+

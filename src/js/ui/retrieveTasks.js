@@ -1,37 +1,57 @@
+import '../../assets/css/taskContent.css';
+import folderFactory from '../backend/folderFactory';
 
 const retrieveTasks = (() => {
 
     const content = document.querySelector(".content");
 
     const loadFolderTasks = (folder) => {
-
         content.innerHTML = '';
 
         const title = document.createElement("div");
+        title.classList.add("taskTitle");
         title.textContent = `Tasks in ${folder.name}`;
         content.appendChild(title);
 
-        const taskList = document.createElement("div");
-        taskList.classList.add("taskList");
+        const taskGrid = document.createElement("div");
+        taskGrid.classList.add("taskGrid");
+
         folder.getTasks().forEach(task => {
+            const taskCard = document.createElement("div");
+            taskCard.classList.add("taskCard");
+
             const taskTitle = document.createElement("h3");
             taskTitle.textContent = task.title;
-            taskList.appendChild(taskTitle);
-            // do the rest of the properties here
+            taskCard.appendChild(taskTitle);
+
             const taskDesc = document.createElement("p");
             taskDesc.textContent = `Description: ${task.desc}`;
-            taskList.appendChild(taskDesc);
+            taskCard.appendChild(taskDesc);
 
             const taskDueDate = document.createElement("p");
             taskDueDate.textContent = `Due: ${task.duedate}`;
-            taskList.appendChild(taskDueDate);
+            taskCard.appendChild(taskDueDate);
 
             const priority = document.createElement("p");
             priority.textContent = `Priority: ${task.priority}`;
-            taskList.appendChild(priority);
+            taskCard.appendChild(priority);
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Delete";
+            removeButton.setAttribute("data-id", task.taskId);
+            taskCard.appendChild(removeButton);
+            
+            taskGrid.appendChild(taskCard);
         });
 
-        content.appendChild(taskList);
+        taskGrid.addEventListener("click", (e) => {
+            if (e.target.hasAttribute("data-id")) {
+                const taskId = e.target.getAttribute("data-id");
+                folder.removeTask(parseInt(taskId));
+            }
+        });
+
+        content.appendChild(taskGrid);
     }
     return { loadFolderTasks };
 })();
