@@ -1,5 +1,4 @@
 import loadPage from './js/ui/loadPage';
-import loadTasks from './js/ui/loadTasks';
 import folderManager from './js/backend/folderManager';
 import deleteTask from './js/ui/deleteTasks';
 
@@ -16,4 +15,4 @@ console.log(workFolder.getTasks());
 
 
 loadPage();
-loadTasks();
+

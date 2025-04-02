@@ -9,7 +9,7 @@ const folderManager = (() => {
         const newFolder = folderFactory(id, name); //calls the folderFactory
         folders.push(newFolder); 
     };
-
+    
     // Remove a folder by ID
     const removeFolder = (id) => {
         folders = folders.filter(folder => folder.id !== id);

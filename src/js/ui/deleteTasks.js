@@ -1,6 +1,7 @@
-import folderFactory from "../backend/folderFactory";
+// deleteTasks.js
+import folderManager from "../backend/folderManager";
 
-const removeTaskHandler = () => {
+const deleteTasks = () => {
     const taskGrid = document.querySelector(".taskGrid");
 
     if (!taskGrid) {
@@ -11,9 +12,9 @@ const removeTaskHandler = () => {
     taskGrid.addEventListener("click", (e) => {
         if (e.target.hasAttribute("data-id")) {
             const taskId = e.target.getAttribute("data-id");
-            folderFactory.removeTask(parseInt(taskId));
+                removeTask(parseInt(taskId));
         }
     });
 };
 
-export default removeTaskHandler;
+export default deleteTasks;

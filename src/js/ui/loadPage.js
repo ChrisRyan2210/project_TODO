@@ -2,23 +2,22 @@
 import '../../assets/css/reset.css';
 import '../../assets/css/initial-load.css';
 import folderManager from '../backend/folderManager';
+import retrieveTasks from './retrieveTasks';
+import openModal from './addFolderModal';
+import renderSidebar from './renderSidebar';
 
-//testing here
+
 const loadPage = () => {
-
     const sidebar = document.querySelector(".sidebar");
-    document.addEventListener("DOMContentLoaded", () => {
 
-        const folderList = folderManager.getFolders();
+        renderSidebar();
 
-        folderList.forEach((folder) => {
-            const button = document.createElement("button");
-            button.textContent = folder.name;
-            button.classList.add("sidebar-button");
-            button.setAttribute("data-id", folder.id);
-            sidebar.appendChild(button); 
-        });
-    });
-};
+       
+    };
+
+  
+
 
 export default loadPage;
+
+
